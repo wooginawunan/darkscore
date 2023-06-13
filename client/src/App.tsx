@@ -1,15 +1,12 @@
 import { useState } from "react";
+import React from 'react';
+import PlotlyPlot from './PlotlyPlot';
 
 let SERVER: string = process.env.REACT_APP_SERVER_ADDRESS || "";
 
-type SearchResult = {
-  emoji: string;
-  message: string;
-  score: number;
-};
 
 async function fetchSearchResults(query: string): Promise<Array<SearchResult>> {
-  const response = await fetch(SERVER + "/search", {
+  const response = await fetch(SERVER + "/tochatgpt", {
     method: "POST",
     headers: {
       "content-type": "application/json;charset=UTF-8",
@@ -24,6 +21,14 @@ async function fetchSearchResults(query: string): Promise<Array<SearchResult>> {
     return responseJson.result;
   }
 }
+
+interface SearchResult {
+    name: string;
+    traits: string[];
+    traitDescr: string[];
+    scores: number[];
+    ranks: number[];
+  }
 
 function App() {
   const [query, setQuery] = useState<string>("");
@@ -43,32 +48,33 @@ function App() {
 
   return (
     <>
-      <h1>Emoji Search</h1>
+      <h1>Compare your Darkness to ChatGPT's</h1>
+        <p> This is a tool to visualize your darkscore versus <a href="https://openai.com/chatgpt" target="_blank">ChatGPT</a>'s. </p>
+        <p> Get your scores from <a href="https://qst.darkfactor.org/" target="_blank"> QST </a>  and submit your URL below (70 statements version survey required). </p>
+        <p> No data saved and your privacy is preserved. </p>
+        <br></br>
+
       <form onSubmit={runSearch}>
         <input
           type="text"
-          placeholder="Find the most relevant emojis"
+          placeholder="Put your URL here e.g.: https://qst.darkfactor.org/?site=pFBNzMyRHFSaWJ0MkY4TTUvTHlJdHRWUXJHY29WckpoaWhWNUhaNUFQTTMrR2htRW1tdkMyVkVQNDRSNVFjb2R2eQ "
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           autoFocus
         />
-        <input type="submit" value="Search" />
+        <input type="submit" value="Compare" />
       </form>
       <div className="result">
-        <Result running={running} data={data} />
+        {data.length > 0 && <PlotlyPlot userData={data} />}
       </div>
       <div className="footer">
-        Powered by{" "}
-        <a href="https://openai.com/api/" target="_blank" rel="noreferrer">
-          OpenAI
-        </a>{" "}
-        © 2022{" "}
+        © 2023{" "}
         <a
-          href="https://lilianweng.github.io/lil-log/"
+          href="https://wooginawunan.github.io/"
           target="_blank"
           rel="noreferrer"
         >
-          Lilian Weng
+           Nan Wu
         </a>
         . All rights reserved.
       </div>
