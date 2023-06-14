@@ -2,8 +2,8 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-        <link rel="stylesheet" href="%PUBLIC_URL%/main.css" />
+        <link rel="icon" href="./favicon.ico" />
+        <link rel="stylesheet" href="./main.css" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#000000" />
         <meta name="description" content="DarkFlower" />
@@ -11,8 +11,9 @@
         manifest.json provides metadata used when your web app is installed on a
         user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
         -->
-        <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+        <link rel="manifest" href="./manifest.json" />
         <!--
+            
         Notice the use of %PUBLIC_URL% in the tags above.
         It will be replaced with the URL of the `public` folder during the build.
         Only files inside the `public` folder can be referenced from the HTML.
@@ -20,6 +21,26 @@
         Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
         work correctly both with client-side routing and a non-root public URL.
         Learn how to configure a non-root public URL by running `npm run build`.
+
+        In a React app, the %PUBLIC_URL% placeholder is a special variable that 
+        is automatically replaced during the build process. It represents the URL 
+        path to the public folder in your project.
+
+        When you run the React app locally, the development server takes care of 
+        replacing %PUBLIC_URL% with the appropriate URL path. This allows the app 
+        to correctly reference the static assets, such as favicon.ico, main.css, 
+        and manifest.json, which are located in the public folder.
+
+        However, after deploying your app on GitHub Pages, the build process is 
+        different. The %PUBLIC_URL% placeholder is not automatically replaced with 
+        the correct URL path, causing the assets to be referenced incorrectly.
+
+        To fix this issue, you need to update the references to your static assets
+         to use absolute paths or relative paths instead of %PUBLIC_URL%. For 
+         example, you can replace %PUBLIC_URL%/favicon.ico with /favicon.ico or 
+         ./favicon.ico. This ensures that the assets are correctly referenced 
+         regardless of the deployment environment.
+
         -->
 
         <title> Human V.S. AI on Darkness </title> 
