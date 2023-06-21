@@ -18,9 +18,9 @@ const PlotlyPlot = ({ userData }: { userData: SearchResult[] }) => {
       theta: user.traits,
       fill: 'toself',
       name: user.name,
-      hovertemplate: `<b>%{customdata[0]} </b> <br><b>Score:</b> %{customdata[1]}<br><b>Rank:</b> %{customdata[2]}%<br><b>`,
+      hovertemplate: `<b>%{customdata[0]} </b> <br>  <span class="traitDescr">%{customdata[3]}</span> <br> <br><b>Score:</b> %{customdata[1]}<br><b>Rank:</b> %{customdata[2]}%<br><b>`,
       text: user.name,
-      customdata: user.traits.map((trait, index) => [trait, user.scores[index], user.ranks[index]]),
+      customdata: user.traits.map((trait, index) => [trait, user.scores[index], user.ranks[index], user.traitDescr[index]]),
     }));
 
     const traits = userData[0]['traits'];
@@ -49,14 +49,34 @@ const PlotlyPlot = ({ userData }: { userData: SearchResult[] }) => {
       hoverlabel: {align: 'left'},
     };
 
+    // // CSS style for wrapped hover template
+    // const plotStyle: React.CSSProperties = {
+    //   width: '700px',
+    //   height: '700px',
+    // };
+
     // CSS style for wrapped hover template
     const plotStyle: React.CSSProperties = {
-      width: '700px',
-      height: '700px',
-      // whiteSpace: 'pre-wrap',
-      // textAlign: 'left',
-      // overflowWrap: 'break-word',
+      width: '100%', // Set the initial width to 100%
+      height: '700px', // Set the initial height
     };
+
+    const handleResize = () => {
+      const windowWidth = window.innerWidth;
+      const chartWidth = Math.min(700, windowWidth - 20); // Adjust the maximum chart width as per your requirement
+      plotStyle.width = `${chartWidth}px`;
+    };
+
+    React.useEffect(() => {
+      // Attach resize event listener
+      window.addEventListener('resize', handleResize);
+      handleResize(); // Call the function once to set the initial width
+
+      return () => {
+        // Cleanup the resize event listener
+        window.removeEventListener('resize', handleResize);
+      };
+    }, []);
 
     return (
       <Plot

@@ -1,7 +1,10 @@
   body {
     font-family: Helvetica, sans-serif;
   }
-  p { margin: 5px; }
+  p { 
+    margin: 5px; 
+    text-align: center;
+  }
   body,
   input,
   button {
@@ -23,6 +26,7 @@
   h1 {
     font-size: 40px;
     line-height: 1.5;
+    text-align: center;
   }
   
   .loader {
@@ -78,6 +82,11 @@
     flex: 1;
     display: flex;
     flex-direction: column;
+  }
+
+  .traitDescr {
+    font-size: 8px; 
+    color: #9DBDBA;
   }
 
   .footer {

@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/darkscore/static/js/main.357215e7.js",
+    "main.js": "/darkscore/static/js/main.6ba9098f.js",
     "index.html": "/darkscore/index.html",
-    "main.357215e7.js.map": "/darkscore/static/js/main.357215e7.js.map"
+    "main.6ba9098f.js.map": "/darkscore/static/js/main.6ba9098f.js.map"
   },
   "entrypoints": [
-    "static/js/main.357215e7.js"
+    "static/js/main.6ba9098f.js"
   ]
 }

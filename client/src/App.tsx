@@ -50,7 +50,9 @@ function App() {
     <>
       <h1>Compare your Darkness to ChatGPT's</h1>
         <p> This is a tool to visualize your darkscore versus <a href="https://openai.com/chatgpt" target="_blank">ChatGPT</a>'s. </p>
+        
         <p> Get your scores from <a href="https://qst.darkfactor.org/" target="_blank"> QST </a>  and submit your URL below (70 statements version survey required). </p>
+        
         <p> No data saved and your privacy is preserved. </p>
         <br></br>
 
