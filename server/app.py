@@ -51,6 +51,7 @@ class DarkFlowerApp:
 
         return data
     
+    
 app = Flask(__name__)
 dark_flower_app = DarkFlowerApp()
 CORS(app, support_credentials=True)
@@ -79,5 +80,5 @@ def compare_to_chatgpt():
 def index():
     return 'Hello World!'
 
-app.run()
+# app.run()
     
